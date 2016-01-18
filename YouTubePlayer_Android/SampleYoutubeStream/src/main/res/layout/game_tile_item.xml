@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/gameGridItemContainer"
+    android:layout_width="175dp"
+    android:layout_height="250dp">
+
+    <ImageView
+        android:id="@+id/gameGridImageView"
+        android:layout_width="175dp"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"
+        android:layout_gravity="center"/>
+
+    <FrameLayout
+        android:id="@+id/textContainer"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/gametitle_bg"
+        android:layout_gravity="bottom"
+        android:gravity="bottom">
+
+        <TextView
+            android:id="@+id/titleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_gravity="center|top"
+            android:lines="2"
+            android:ellipsize="end"
+            android:scrollHorizontally="true"
+            android:textColor="@color/gametitle_text"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:id="@+id/installedTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_gravity="center|bottom"
+            android:textSize="14sp"
+            android:visibility="gone"
+            android:text="@string/installed_game"/>
+    </FrameLayout>
+</FrameLayout>

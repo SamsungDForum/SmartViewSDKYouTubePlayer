@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.samsung.msf.youtubeplayer"
+    android:sharedUserId="com.samsung.multiscreen.shared">
+
+    <!-- SyncAdapters are available in API 5 and above. We use API 7 as a baseline for samples. -->
+    <uses-sdk
+        android:minSdkVersion="7"
+        android:targetSdkVersion="17" />
+
+    <!-- Required for fetching feed data. -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <!-- Required because we're use msf lib -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE"/>
+    <!-- Required because we're use msf lib -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/app_icon_sample"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <!-- from here is my job -->
+        <!-- Main activity, responsible for showing a list of feed entries. -->
+        <activity
+            android:name=".client.activity.StreamingGridActivity"
+            android:label="@string/app_name"
+            android:screenOrientation = "landscape">
+            <!-- This intent filter places this activity in the system's app launcher. -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

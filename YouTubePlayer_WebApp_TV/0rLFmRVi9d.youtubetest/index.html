@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>MSF Example</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="./css/bootstrap.min.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<script src="http://www.youtube.com/iframe_api"></script>
+	<script src="./js/jquery.min.js"></script>
+	<script src="./js/bootstrap.min.js"></script>
+	<script src="./js/msf.min.js"></script>
+	<script src="./js/main.js"></script>
+
+</head>
+
+<body>
+
+<div id="fullplayer" style="display:none"></div>
+
+<div class="container" id="main" >
+  <div class="jumbotron">
+    <h1>MSF Youtube player</h1>
+    <p> play movie trailer</p>
+    <p id="title"> Title </p>
+  </div>
+	
+	<div class="row" id="connection" style="display:block">
+		<div class="col-sm-4">
+		</div>
+		<div class="col-sm-4">
+			<h1>Make connection first.</h1>
+		</div>
+	</div>
+	
+	<div class="row" id="info" style="display:none">
+		<div class="col-sm-4">
+		</div>
+		<div class="col-sm-4">
+			<h1>Select movie trailer.</h1>
+		</div>
+	</div>
+	
+  <div class="row" id="player" style="display:none">
+    <div class="col-sm-4">
+      <h3>thumnail</h3>
+		<img id="thumnail" src="" width="380" height="300">
+		</img>
+    </div>
+    <div class="col-sm-8">
+      <h3>player</h3>
+		<!-- 
+		<iframe id="ytplayer" enablejsapi="1" type="text/html" width="740" height="440" src="" frameborder="5"/>
+		-->
+		<div id="ytplayer"></div>
+    </div>
+  </div>
+  	
+  	<div class="row" id="log">
+		  --Logging enabled--
+	</div>
+ 
+</div>
+
+
+
+</body>
+</html>
+
+</body>
+</html>

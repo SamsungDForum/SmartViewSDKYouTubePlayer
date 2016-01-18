@@ -1,0 +1,51 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:1.3.0'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+apply plugin: 'android'
+
+android {
+    compileSdkVersion 19
+    buildToolsVersion "20.0.0"
+
+
+    defaultConfig {
+        applicationId "com.samsung.msf.youtubeplayer"
+        minSdkVersion 19
+        targetSdkVersion 19
+        int vcode = getBuildTime()
+        String appVersion = "1.0"
+        String vname = appVersion + "." + vcode
+        versionName vname
+        versionCode vcode
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+//    compile 'com.android.support:appcompat-v7:19.0.0'
+    compile 'com.android.support:support-v4:19.0.+'
+}
+
+project.ext.set("archivesBaseName", "MSFYoutubePlayer");
+
+def getBuildTime() {
+    def date = new Date()
+    def formattedDate = date.format('yyMMddHHmm')
+    println sprintf("getBuildTime() : %s", formattedDate)
+    return Integer.parseInt(formattedDate)
+}

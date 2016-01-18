@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/contol_root">
+
+    <Button
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/rew"
+        android:onClick="onControlbuttonClick"
+        android:drawableTop="@android:drawable/ic_media_rew" />
+
+    <Button
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/stop"
+        android:focusable="true"
+        android:onClick="onControlbuttonClick"
+        android:drawableTop="@drawable/ic_media_stop" />
+
+    <Button
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/pause"
+        android:onClick="onControlbuttonClick"
+        android:drawableTop="@android:drawable/ic_media_pause" />
+
+    <Button
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/play"
+        android:onClick="onControlbuttonClick"
+        android:drawableTop="@android:drawable/ic_media_play" />
+    <Button
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/ff"
+        android:onClick="onControlbuttonClick"
+        android:drawableTop="@android:drawable/ic_media_ff" />
+    <Button
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/fullscreen"
+        android:onClick="onControlbuttonClick"
+        android:drawableTop="@drawable/ic_media_fullscreen" />
+</LinearLayout>
