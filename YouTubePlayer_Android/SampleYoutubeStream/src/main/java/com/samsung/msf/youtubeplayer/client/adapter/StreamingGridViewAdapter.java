@@ -43,10 +43,10 @@ public class StreamingGridViewAdapter extends BaseAdapter {
         View view = convertView;
 
         if(view == null) {
-            view = LayoutInflater.from(mContext).inflate(R.layout.game_tile_item, null);
+            view = LayoutInflater.from(mContext).inflate(R.layout.main_contents, null);
         }
 
-        ImageView imageView = (ImageView) view.findViewById(R.id.gameGridImageView);
+        ImageView imageView = (ImageView) view.findViewById(R.id.GridImageView);
         TextView titleTextView = (TextView) view.findViewById(R.id.titleTextView);
         TextView installedTextView = (TextView) view.findViewById(R.id.installedTextView);
 

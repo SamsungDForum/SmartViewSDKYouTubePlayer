@@ -27,7 +27,8 @@
         <activity
             android:name=".client.activity.StreamingGridActivity"
             android:label="@string/app_name"
-            android:screenOrientation = "landscape">
+            android:screenOrientation = "landscape"
+            android:theme="@android:style/Theme.Holo">
             <!-- This intent filter places this activity in the system's app launcher. -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
