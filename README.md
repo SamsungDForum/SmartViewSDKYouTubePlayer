@@ -39,5 +39,5 @@
 1. TV app play youtube video that you choose in mobile.
 2. It shows video of title, thumbnail, video.
 
-![](/YouTubePlayer_screenshot/YT_Screenshot07_tv.jpg)
-![](/YouTubePlayer_screenshot/YT_Screenshot08_tv.jpg)
+![](/YouTubePlayer_screenshot/YT_Screenshot07_tv.png)
+![](/YouTubePlayer_screenshot/YT_Screenshot08_tv.png)
