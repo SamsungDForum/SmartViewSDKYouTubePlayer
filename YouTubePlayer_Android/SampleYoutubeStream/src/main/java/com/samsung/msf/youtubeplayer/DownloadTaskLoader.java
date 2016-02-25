@@ -3,6 +3,7 @@ package com.samsung.msf.youtubeplayer;
 import android.content.AsyncTaskLoader;
 import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.samsung.msf.youtubeplayer.client.util.FeedParser;
 
@@ -18,7 +19,7 @@ public class DownloadTaskLoader extends AsyncTaskLoader<List<FeedParser.Entry>> 
     // need API KEY
     //TO BE -  https://www.googleapis.com/youtube/v3/videos?id=<video_id>&key=<YOUR_API_KEY>&part=snippet
     // reference https://developers.google.com/youtube/v3/docs/search/list
-    private  final String MY_API_KEY = "&key=YOUR_API_KEY";  //need to change OAuth2 token
+    private  final String MY_API_KEY = "&key=";  //need to change OAuth2 token
     private  final String FEED_WHAT = "&part=snippet&q=movie+trailers";
     private  final String FEED_ORDER = "&order=relevance"; //date, rating relevance title videoCount viewCount
     private  final String FEED_MAX = "&maxResults=50"; //
@@ -72,5 +73,12 @@ public class DownloadTaskLoader extends AsyncTaskLoader<List<FeedParser.Entry>> 
         }else{
             return FEED_URL+"&part=snippet&q="+data;
         }
+    }
+    public  boolean isAPIKeyEnable(){
+        if("&key=".equals(MY_API_KEY)){
+            return false;
+        }
+        else
+            return true;
     }
 }

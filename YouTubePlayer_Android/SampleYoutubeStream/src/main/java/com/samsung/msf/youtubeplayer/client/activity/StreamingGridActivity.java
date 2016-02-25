@@ -8,6 +8,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.Loader;
 import android.graphics.drawable.AnimationDrawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -83,6 +85,16 @@ public class StreamingGridActivity extends Activity implements LoaderManager.Loa
     public Loader<List<FeedParser.Entry>> onCreateLoader(int id, Bundle args) {
         Log.d(TAG, "onCreateLoader ");
         DownloadTaskLoader loader = new DownloadTaskLoader(this);
+        if(!loader.isAPIKeyEnable()){
+            Toast.makeText(mContext, "Set Your API KEY ", Toast.LENGTH_LONG).show();
+            loader.stopLoading();
+            return null;
+        }
+        if(!isNetworkEnable()){
+            Toast.makeText(mContext,"Check Your Network.",Toast.LENGTH_LONG).show();
+            loader.stopLoading();
+            return null;
+        }
         loader.forceLoad();
         return loader;
     }
@@ -118,13 +130,32 @@ public class StreamingGridActivity extends Activity implements LoaderManager.Loa
         }
     }
 
+    private boolean isNetworkEnable(){
+        // Get ConnectivityManager
+        ConnectivityManager cm =
+                (ConnectivityManager) mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        // Get infomation mobile network
+        NetworkInfo ni = cm.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+        boolean isMobileConn = ni.isConnected();
+
+        // Get infomation wifi network
+        ni = cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+        boolean isWifiConn = ni.isConnected();
+
+        if(isWifiConn || isMobileConn) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "onCreate ");
+        mContext = this.getBaseContext();
         setContentView(R.layout.main_activity);
 
-        mContext = this.getBaseContext();
 
         setConnectionStatus(DISCONNECT_DEVICE);
 
@@ -657,9 +688,9 @@ public class StreamingGridActivity extends Activity implements LoaderManager.Loa
     }
 
     public void disconnectTV(boolean stop, boolean destory){
-        Log.d(TAG, "disconnect  status = " + mConnectSatus.toString());
-        if (CONNECT_DEVICE.equals(mConnectSatus)) {
 
+        if (CONNECT_DEVICE.equals(mConnectSatus)) {
+            Log.d(TAG, "disconnect  status = " + mConnectSatus.toString());
             setRefreshActionButtonState(DISCONNECT_DEVICE);
             mApplication.disconnect(stop, new Result<Client>() {
                 @Override
@@ -667,7 +698,7 @@ public class StreamingGridActivity extends Activity implements LoaderManager.Loa
                     Log.d(TAG, "disconnect - onSuccess : " + client.toString());
                     Toast.makeText(mContext, "Disconnect succussfully.", Toast.LENGTH_LONG).show();
                     if(mApplication != null) {
-                        mApplication.removeAllListeners();
+                        //mApplication.removeAllListeners();
                         mService = null;
                         mApplication = null;
                     }
@@ -699,7 +730,7 @@ public class StreamingGridActivity extends Activity implements LoaderManager.Loa
             @Override
             public void onDisconnect(Client client) {
                 Log.d(TAG, "onDisconnect - client : " + client.toString());
-                Toast.makeText(mContext,"Disconnect TV",Toast.LENGTH_LONG).show();
+                Toast.makeText(mContext,"Disconnect TV from onDisconnect",Toast.LENGTH_LONG).show();
                 setRefreshActionButtonState(DISCONNECT_DEVICE);
                 mService = null;
                 mApplication = null;

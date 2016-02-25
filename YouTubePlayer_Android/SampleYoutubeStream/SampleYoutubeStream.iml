@@ -89,7 +89,7 @@
     <orderEntry type="jdk" jdkName="Android API 19 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="support-v4-19.0.1" level="project" />
+    <orderEntry type="library" exported="" name="android-smartview-sdk-2.0.14" level="project" />
     <orderEntry type="library" exported="" name="universal-image-loader-1.9.4" level="project" />
-    <orderEntry type="library" exported="" name="android-msf-api-2.0.13" level="project" />
   </component>
 </module>
