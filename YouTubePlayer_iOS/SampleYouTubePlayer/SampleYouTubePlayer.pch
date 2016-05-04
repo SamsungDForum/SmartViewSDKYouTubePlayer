@@ -1,0 +1,25 @@
+//
+//  SampleYouTubePlayer.pch
+//  SampleYouTubePlayer
+//
+//  Created by aseemkapoor on 29/04/16.
+//  Copyright © 2016 samsung. All rights reserved.
+//
+
+#ifndef SampleYouTubePlayer_pch
+#define SampleYouTubePlayer_pch
+
+#ifdef __OBJC__ // {
+
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import <QuartzCore/QuartzCore.h>
+#import <SystemConfiguration/SystemConfiguration.h>
+#import <MobileCoreServices/MobileCoreServices.h>
+
+#endif // } __OBJC__
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif /* SampleYouTubePlayer_pch */

@@ -13,6 +13,23 @@ $(function(){
 //	displayDiv("player");
 	
 	msf.local(function(err, service){
+		var reqAppControl = tizen.application.getCurrentApplication().getRequestedAppControl();
+
+		if (reqAppControl && reqAppControl.appControl) {
+		    var data = reqAppControl.appControl.data;
+		    
+		    for (var i = 0; i < data.length; i++) {
+		    	log("WRT param #" + i + " key : " + data[i].key);
+		        for (var j = 0; j < data[i].value.length; j++) {
+		            console.log("WRT param #" + i + " #" + j + " value : " + data[i].value[j]);
+		        }
+		        if (data[i].key == "PAYLOAD") {
+		        	log("payload =" + data[i].value[0]);
+		        	var payload = data[i].value[0];
+		        }
+		    }
+		}
+		
 		log('Start MSF');
 	    var channel = service.channel(mChannel);
 	    

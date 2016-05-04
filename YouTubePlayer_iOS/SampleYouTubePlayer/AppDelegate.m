@@ -24,6 +24,7 @@
 
 #import "AppDelegate.h"
 #import "PhotoShareController.h"
+#import "YoutubeDataFetcher.h"
 
 @interface AppDelegate ()
 
@@ -36,6 +37,7 @@
     // Override point for customization after application launch.
     
     [[PhotoShareController sharedInstance] searchServices];
+    [[YoutubeDataFetcher getSharedInstance] performGetRequest];
     return YES;
 }
 

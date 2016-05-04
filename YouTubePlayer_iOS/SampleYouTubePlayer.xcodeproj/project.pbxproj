@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		90CD1C731CD34300004F9DA8 /* VideoInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CD1C701CD34300004F9DA8 /* VideoInfo.m */; };
+		90CD1C741CD34300004F9DA8 /* YoutubeDataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CD1C721CD34300004F9DA8 /* YoutubeDataFetcher.m */; };
 		C91C2A291C89AF77003B3600 /* Requester.m in Sources */ = {isa = PBXBuildFile; fileRef = C91C2A281C89AF77003B3600 /* Requester.m */; };
 		C950685C1C9FCAD500FA0221 /* PhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C950685B1C9FCAD500FA0221 /* PhotoCell.m */; };
 		C976D52F1CA961290076AF4D /* CastButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C976D52E1CA961290076AF4D /* CastButtonItem.m */; };
@@ -48,6 +50,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		90CD1C6F1CD34300004F9DA8 /* VideoInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoInfo.h; sourceTree = "<group>"; };
+		90CD1C701CD34300004F9DA8 /* VideoInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoInfo.m; sourceTree = "<group>"; };
+		90CD1C711CD34300004F9DA8 /* YoutubeDataFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YoutubeDataFetcher.h; sourceTree = "<group>"; };
+		90CD1C721CD34300004F9DA8 /* YoutubeDataFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YoutubeDataFetcher.m; sourceTree = "<group>"; };
+		90CD1C761CD34446004F9DA8 /* SampleYouTubePlayer.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SampleYouTubePlayer.pch; sourceTree = "<group>"; };
 		C91C2A271C898F13003B3600 /* Requester.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Requester.h; sourceTree = "<group>"; };
 		C91C2A281C89AF77003B3600 /* Requester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Requester.m; sourceTree = "<group>"; };
 		C950685A1C9FCABA00FA0221 /* PhotoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotoCell.h; sourceTree = "<group>"; };
@@ -138,7 +145,12 @@
 				C976D5301CA962740076AF4D /* DeviceListViewController.h */,
 				C976D5311CA962740076AF4D /* DeviceListViewController.m */,
 				C976D5321CA962740076AF4D /* PhotoShareController.h */,
+				90CD1C6F1CD34300004F9DA8 /* VideoInfo.h */,
+				90CD1C701CD34300004F9DA8 /* VideoInfo.m */,
+				90CD1C711CD34300004F9DA8 /* YoutubeDataFetcher.h */,
+				90CD1C721CD34300004F9DA8 /* YoutubeDataFetcher.m */,
 				C976D5331CA962740076AF4D /* PhotoShareController.m */,
+				90CD1C761CD34446004F9DA8 /* SampleYouTubePlayer.pch */,
 				C976D52E1CA961290076AF4D /* CastButtonItem.m */,
 				C976D52D1CA9611D0076AF4D /* CastButtonItem.h */,
 				C9D0FCA51C89602900E8EDEC /* AppDelegate.h */,
@@ -248,6 +260,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9D0FCAA1C89602900E8EDEC /* ViewController.m in Sources */,
+				90CD1C731CD34300004F9DA8 /* VideoInfo.m in Sources */,
 				C976D5381CA964DB0076AF4D /* TerminateAppViewController.m in Sources */,
 				C950685C1C9FCAD500FA0221 /* PhotoCell.m in Sources */,
 				C976D5351CA962740076AF4D /* PhotoShareController.m in Sources */,
@@ -255,6 +268,7 @@
 				C976D52F1CA961290076AF4D /* CastButtonItem.m in Sources */,
 				C91C2A291C89AF77003B3600 /* Requester.m in Sources */,
 				C976D5341CA962740076AF4D /* DeviceListViewController.m in Sources */,
+				90CD1C741CD34300004F9DA8 /* YoutubeDataFetcher.m in Sources */,
 				C9D0FCA41C89602900E8EDEC /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -378,6 +392,8 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "${SRCROOT}/SampleYouTubePlayer/SampleYouTubePlayer.pch";
 				INFOPLIST_FILE = SampleYouTubePlayer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -398,6 +414,8 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "${SRCROOT}/SampleYouTubePlayer/SampleYouTubePlayer.pch";
 				INFOPLIST_FILE = SampleYouTubePlayer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

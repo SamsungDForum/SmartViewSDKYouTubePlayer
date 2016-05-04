@@ -117,23 +117,65 @@ Use bootstrap(container/jumbotron) and 'iframe' tag to play youtube video.
 
 1. Event  'play' : mobile send to 'play' event when select video item.
 2. msg : mobile send a json data to TV, json include title,thumbnail url, video url 
- 1. we can make youtube video URL using videoId :  http://www.youtube.com/embed/ + "videoId"
- 2. and set a url into 'iframe' of id "ytplayer"
+3. we can make youtube video URL using videoId :  http://www.youtube.com/embed/ + "videoId"
+4. and set a url into 'iframe' of id "ytplayer"
 
-	channel.on('play', function(msg, from){
-	    	hideDiv("connection");
-			hideDiv("info");
-			displayDiv("player");
-			
-	    	var obj = JSON.parse(msg);
-	    	
-	        console.log("event play : obj "+obj);
+		channel.on('play', function(msg, from){
+		hideDiv("connection");
+		hideDiv("info");
+		displayDiv("player");
+		
+		var obj = JSON.parse(msg);
+		
+	    console.log("event play : obj "+obj);
 	
-	        title.innerHTML = "Title : "+ obj.videoName;
-	        document.getElementById("thumnail").src = obj.videoThumnail;
-	        document.getElementById("ytplayer").src = "http://www.youtube.com/embed/"+obj.videoId+"?autoplay=1&enablejsapi=1";     	        
-	        
-	        channel.publish('play_TV', 'playing '+ msg, mClientId);
-	    });
+	    title.innerHTML = "Title : "+ obj.videoName;
+	    document.getElementById("thumnail").src = obj.videoThumnail;
+	    document.getElementById("ytplayer").src = "http://www.youtube.com/embed/"+obj.videoId+"?autoplay=1&enablejsapi=1";     	        
+	    
+	    channel.publish('play_TV', 'playing '+ msg, mClientId);
+	});
  
  
+## Get PAYLOAD
+1. mobile app can launch with payload
+
+	**Application application = service.createApplication(appid, channelid, startArgs);**
+
+
+		JSONObject test2 = new JSONObject();
+	
+		try {
+		    test2.put("userID","XX");
+		    test2.put("userPW","1234");
+		    test2.put("pairCode","XX@1234");
+		} catch (JSONException e) {
+		    e.printStackTrace();
+		}
+		
+		Map<String,Object> startArgs2 = new HashMap<String, Object>();
+		Object  payload = test2.toString();
+		
+		startArgs2.put(Message.PROPERTY_MESSAGE_ID,payload);
+		
+		mApplication = mService.createApplication(mApplicationId, mChannelId,startArgs2);
+
+
+2. TV Web App can get payload data when create application.
+
+    	var reqAppControl = tizen.application.getCurrentApplication().getRequestedAppControl();
+
+		if (reqAppControl && reqAppControl.appControl) {
+		    var data = reqAppControl.appControl.data;
+		    
+		    for (var i = 0; i < data.length; i++) {
+		    	log("WRT param #" + i + " key : " + data[i].key);
+		        for (var j = 0; j < data[i].value.length; j++) {
+		            console.log("WRT param #" + i + " #" + j + " value : " + data[i].value[j]);
+		        }
+		        if (data[i].key == "PAYLOAD") {
+		        	log("payload =" + data[i].value[0]);
+		        	var payload = data[i].value[0];
+		        }
+		    }
+		}

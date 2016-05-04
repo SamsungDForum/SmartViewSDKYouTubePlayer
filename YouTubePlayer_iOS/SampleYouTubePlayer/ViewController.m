@@ -27,6 +27,7 @@
 #import "PhotoShareController.h"
 #import "DeviceListViewController.h"
 #import "TerminateAppViewController.h"
+#import "YoutubeDataFetcher.h"
 
 @interface ViewController ()
 
@@ -35,15 +36,8 @@
 @implementation ViewController
 
 static NSString * const reuseIdentifier = @"photoCell";
-static NSArray *itemsArray;
 
 //static NSString* youtubeAPI = @"https://www.googleapis.com/youtube/v3/search?q=movie+trailers&part=snippet&maxResults=50&order=relevance";
-
-static NSString* youtubeAPI = @"https://www.googleapis.com/youtube/v3/search?";
-static NSString* FEED_WHAT = @"q=movie+trailers&part=snippet";
-static NSString* FEED_MAX = @"&maxResults=50";
-static NSString* FEED_ORDER = @"&order=relevance";
-static NSString* APIKey = @"&key=YOUR_API_KEY";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -55,10 +49,16 @@ static NSString* APIKey = @"&key=YOUR_API_KEY";
     self.castItem = [[CastButtonItem alloc] initWithButtonFrame:rect];
     self.navigationItem.rightBarButtonItem = self.castItem;
     self.navigationItem.rightBarButtonItem.enabled = YES;
+    [self setTitle:@"YouTube Player"];
     self.castItem.castStatus = [[PhotoShareController sharedInstance] getCastStatus];
     [self.castItem.castButton addTarget:self action:@selector(cast) forControlEvents:UIControlEventTouchUpInside];
     
-    [self performGetRequest];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(listRefreshed:) name:kListPrepared object:[YoutubeDataFetcher getSharedInstance]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -66,34 +66,9 @@ static NSString* APIKey = @"&key=YOUR_API_KEY";
     // Dispose of any resources that can be recreated.
 }
 
--(void)performGetRequest
-{
-    //NSString* youtubeURL = [youtubeAPI stringByAppendingString:APIKey];
-    
-    youtubeAPI = [youtubeAPI stringByAppendingString:FEED_WHAT];
-    youtubeAPI = [youtubeAPI stringByAppendingString:FEED_MAX];
-    youtubeAPI = [youtubeAPI stringByAppendingString:FEED_ORDER];
-    youtubeAPI = [youtubeAPI stringByAppendingString:APIKey];
-    
-    NSLog(@"youtube api is %@", youtubeAPI);
-    
-    NSURL *url = [NSURL URLWithString:youtubeAPI];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
-    
-    [[session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        
-        NSLog(@"error:%@", error.localizedDescription);
-        
-        NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-        
-        itemsArray = [jsonDict objectForKey:@"items"];
-        
-        [[self collectionView] reloadData];
-        
-    }] resume];
-    
+- (IBAction)testBtnAction:(id)sender {
+
+
 }
 
 -(void)downloadImageWithURL:(NSURL *)url completionBlock:(void (^)(bool succeeded, UIImage *image))completionBlock
@@ -101,6 +76,8 @@ static NSString* APIKey = @"&key=YOUR_API_KEY";
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
     [[session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
        
         if(error == nil)
@@ -111,7 +88,7 @@ static NSString* APIKey = @"&key=YOUR_API_KEY";
         }
         
     }] resume];
-    
+        });
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -119,40 +96,60 @@ static NSString* APIKey = @"&key=YOUR_API_KEY";
     return 1;
 }
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    
-    NSLog(@"count is %lu", itemsArray.count);
-    
-    return itemsArray.count - 1;
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{  
+    return [[[YoutubeDataFetcher getSharedInstance] videoArray] count] ;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     PhotoCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
-    NSDictionary *item = [itemsArray objectAtIndex:indexPath.item + 1];
-    if([[[item objectForKey:@"id"] objectForKey:@"kind" ] isEqualToString:@"youtube#video"])
+    if([[[YoutubeDataFetcher getSharedInstance] videoArray] count] > indexPath.item)
     {
-        NSString* videoId = [[item objectForKey:@"id"] objectForKey:@"videoId"];
-        NSLog(@"id is %@", videoId);
+        VideoInfo *vidObj = [[[YoutubeDataFetcher getSharedInstance] videoArray] objectAtIndex:indexPath.item];
+        UIImage *img = [vidObj getThumbnailImage];
         
-        NSString *title = [[item objectForKey:@"snippet"] objectForKey:@"title"];
-        NSLog(@"title is %@", title);
-        
-        NSString *thumbnailURL = [[[[item objectForKey:@"snippet"] objectForKey:@"thumbnails"] objectForKey:@"medium"] objectForKey:@"url"];
-        NSLog(@"url is %@", thumbnailURL);
-        
-        NSURL *url = [NSURL URLWithString:thumbnailURL];
-        
-        [self downloadImageWithURL:url completionBlock:^(bool succeeded, UIImage *image) {
-            if(succeeded){
-                cell.photoCellImage.image = image;
-                cell.titleText.text = title;
-            }
-        }];
+        if (img == nil)
+        {
+            NSURL *imageURL = [NSURL URLWithString:[vidObj thumbnailURL]];
+            dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+            dispatch_async(queue, ^{
+                NSURLRequest *request = [NSURLRequest requestWithURL:imageURL];
+                NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+                
+                [[session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                    
+                    if(error == nil)
+                    {
+                        UIImage *img = [UIImage imageWithData:data];
+                        [vidObj storeThumbnailImage:data];
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            cell.photoCellImage.image = img;
+                        });
+                        
+                    }
+                    
+                }] resume];
+                
+                
+            });
+        }
+        else
+        {
+            cell.photoCellImage.image = img;
+        }
     }
-        
+    
     return cell;
+}
+
+-(void) listRefreshed: (NSNotification *)notification
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[self collectionView] reloadData];
+    });
+    
 }
 
 #pragma mark <UICollectionViewDelegate>
@@ -169,22 +166,9 @@ static NSString* APIKey = @"&key=YOUR_API_KEY";
         return;
     }
     
-     NSDictionary *item = [itemsArray objectAtIndex:indexPath.item + 1];
+    VideoInfo *vidObj = [[[YoutubeDataFetcher getSharedInstance] videoArray] objectAtIndex:indexPath.item];
+    [[PhotoShareController sharedInstance] launchApp:vidObj.videoId  :vidObj.title :vidObj.thumbnailURL];
     
-    if([[[item objectForKey:@"id"] objectForKey:@"kind" ] isEqualToString:@"youtube#video"])
-    {
-        NSString* videoId = [[item objectForKey:@"id"] objectForKey:@"videoId"];
-        NSLog(@"id is %@", videoId);
-        
-        NSString *title = [[item objectForKey:@"snippet"] objectForKey:@"title"];
-        NSLog(@"title is %@", title);
-        
-        NSString *thumbnailURL = [[[[item objectForKey:@"snippet"] objectForKey:@"thumbnails"] objectForKey:@"high"] objectForKey:@"url"];
-        NSLog(@"url is %@", thumbnailURL);
-        
-        [[PhotoShareController sharedInstance] launchApp:videoId :title :thumbnailURL];
-        
-    }
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
