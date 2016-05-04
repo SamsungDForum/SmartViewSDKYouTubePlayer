@@ -24,12 +24,10 @@
 
 #import <UIKit/UIKit.h>
 
-//! Project version number for MSF.
-FOUNDATION_EXPORT double MSFVersionNumber;
+//! Project version number for SmartView framework.
+FOUNDATION_EXPORT double SVFVersionNumber;
 
-//! Project version string for MSF.
-FOUNDATION_EXPORT const unsigned char MSFVersionString[];
-
-// In this header, you should import all the public headers of your framework using statements like #import <MSF/PublicHeader.h>
+//! Project version string for SmartView framework.
+FOUNDATION_EXPORT const unsigned char SVFVersionString[];
 
 #import <SmartView/GCDAsyncUdpSocket.h>

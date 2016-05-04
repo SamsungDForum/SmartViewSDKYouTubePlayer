@@ -397,7 +397,7 @@
 				INFOPLIST_FILE = SampleYouTubePlayer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.samsung.smartview2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.samsung.smartview.dmp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "27ff4e81-57bd-45bd-b723-325bfa1bcbda";
 			};
@@ -419,7 +419,7 @@
 				INFOPLIST_FILE = SampleYouTubePlayer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.samsung.smartview2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.samsung.smartview.dmp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "27ff4e81-57bd-45bd-b723-325bfa1bcbda";
 			};
