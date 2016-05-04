@@ -1,7 +1,7 @@
 ##Prerequisite
 ###1. [SmartView SDK Android Library](http://www.samsungdforum.com/AddLibrary/SmartViewDownload):  Android Package(Mobile)
 	
-	added source /libs/android-msf-api-2.0.13.jar
+	added source /libs/android-msf-api-2.0.18.jar
 
 ###2. [universal-image-loader libarary](https://github.com/nostra13/Android-Universal-Image-Loader)   :  for handling image of video thumnails.
 	
@@ -190,8 +190,26 @@
 
                     }
                 });
- 
 
+ 
+## Launch TV web app with StartArg
+
+1. refer to [How to use "StartArg"](http://www.samsungdforum.com/AddLibrary/SmartViewDownload)
+
+
+
+		JSONObject test2 = new JSONObject();
+		try {
+		    test2.put("userID","XX");
+		    test2.put("userPW","1234");
+		    test2.put("pairCode","XX@1234");
+		} catch (JSONException e) {
+		    e.printtackTrace();
+		}
+		Map<String,Object> startArgs2 = new HashMap<String, Object>();
+		Object  payload = test2.toString();
+		startArgs2.put(Message.PROPERTY_MESSAGE_ID,payload);
+		mApplication = mService.createApplication(mApplicationId, mChannelId,startArgs2); 
  
 
 ##Disconnect
