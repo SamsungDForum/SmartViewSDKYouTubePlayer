@@ -10,8 +10,8 @@ import com.samsung.multiscreen.Error;
 
 public class TestUtil {
     private static final String TAG = "TestUtil";
-    private static final String TEST_URI = "http://192.168.0.131:8001/api/v2/";
-    private static String TEST_APP_ID = "com.samsung.msf.SampleYoutubeHost";
+    private static final String TEST_URI = "http://192.168.0.75:8001/api/v2/";
+    private static String TEST_APP_ID = "0rLFmRVi9d.youtubetest";
     private static String TEST_CHANNEL_ID = "com.samsung.msf.youtubetest";
     private static Service mService;
     private static Channel mChannel;
@@ -79,6 +79,20 @@ public class TestUtil {
         }
     }
 
+    public static void getInfoDevice(){
+        if(mApplication != null){
+            mService.getDeviceInfo(new Result<Device>() {
+                @Override
+                public void onSuccess(Device device) {
+                    Log.d(TAG, "getInfoDevice - onSuccess : " + device.toString());
+                }
+                @Override
+                public void onError(Error error) {
+                    Log.d(TAG, "getInfoDevice - onError : " + error.toString());
+                }
+            });
+        }
+    }
     public static void getInfoApplication(){
         if(mApplication != null){
             mApplication.getInfo(new Result<ApplicationInfo>() {

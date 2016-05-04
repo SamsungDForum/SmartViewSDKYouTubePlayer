@@ -62,13 +62,17 @@ limitations under the License.
                 android:title="@string/description_stop"
                 android:orderInCategory="7"
                 android:showAsAction="always" />
-            <item android:id="@+id/menu_getinfo"
-                android:title="@string/description_getinfo"
+            <item android:id="@+id/menu_getDeviceinfo"
+                android:title="@string/description_getdeviceinfo"
                 android:orderInCategory="8"
+                android:showAsAction="always" />
+            <item android:id="@+id/menu_getAppinfo"
+                android:title="@string/description_getappinfo"
+                android:orderInCategory="9"
                 android:showAsAction="always" />
             <item android:id="@+id/menu_install"
                 android:title="@string/description_install"
-                android:orderInCategory="9"
+                android:orderInCategory="10"
                 android:showAsAction="always" />
         </menu>
     </item>

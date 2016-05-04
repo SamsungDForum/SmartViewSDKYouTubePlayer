@@ -36,6 +36,7 @@ import com.samsung.multiscreen.*;
 import com.samsung.multiscreen.Error;
 import com.samsung.msf.youtubeplayer.client.adapter.StreamingGridViewAdapter;
 import com.samsung.msf.youtubeplayer.R;
+import com.samsung.multiscreen.util.JSONUtil;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -43,6 +44,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 
 public class StreamingGridActivity extends Activity implements LoaderManager.LoaderCallbacks<List<FeedParser.Entry>> {
@@ -351,7 +353,11 @@ public class StreamingGridActivity extends Activity implements LoaderManager.Loa
 
                 return true;
             // . TEST API
-            case R.id.menu_getinfo:
+            case R.id.menu_getDeviceinfo:
+                TestUtil.getInfoDevice();
+                return true;
+            // . TEST API
+            case R.id.menu_getAppinfo:
                 TestUtil.getInfoApplication();
                 return true;
             // . TEST API
@@ -504,8 +510,28 @@ public class StreamingGridActivity extends Activity implements LoaderManager.Loa
                         mService = (Service) mDeviceList.get(which);
 
                         if(mApplication == null) {
+                            Map<String,Object> startArgs1 = new HashMap<String, Object>();
+                            Map<String,Object> startArgs2 = new HashMap<String, Object>();
+                            Object payload = "aaa";
+                            startArgs1.put(Message.PROPERTY_MESSAGE_ID,payload);
 
-                            mApplication = mService.createApplication(mApplicationId, mChannelId);
+
+                            JSONObject test2 = new JSONObject();
+                            try {
+                                test2.put("userID","XX");
+                                test2.put("userPW","1234");
+                                test2.put("pairCode","XX@1234");
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                            payload = test2.toString();
+
+                            startArgs2.put(Message.PROPERTY_MESSAGE_ID, payload);
+
+
+                            Log.d(TAG,"startArgs1 = "+startArgs1);
+                            Log.d(TAG,"startArgs2 = "+startArgs2);
+                            mApplication = mService.createApplication(mApplicationId, mChannelId,startArgs2);
 
                             mApplication.getInfo(new Result<ApplicationInfo>() {
                                 @Override
@@ -532,6 +558,7 @@ public class StreamingGridActivity extends Activity implements LoaderManager.Loa
                                 @Override
                                 public void onError(com.samsung.multiscreen.Error error) {
                                     Log.d(TAG, "application.connect onError " + error.toString());
+                                    setRefreshActionButtonState(DISCONNECT_DEVICE);
                                     Toast.makeText(mContext,"Launch TV app error occurs : "+error.toString(),Toast.LENGTH_LONG).show();
                                 }
                             });

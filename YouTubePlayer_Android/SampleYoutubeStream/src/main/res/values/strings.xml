@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">SmartView SDK Youtube Player</string>
+    <string name="app_name">Youtube Player</string>
     <string name="action_settings">Settings</string>
     <string name="account_name">FeedSync Service</string>
     <string name="title_entry_detail">Entry Detail</string>
@@ -14,7 +14,8 @@
     <string name="description_start">Start</string>
     <string name="description_stop">Stop</string>
     <string name="description_install">Install</string>
-    <string name="description_getinfo">Getinfo</string>
+    <string name="description_getdeviceinfo">GetDeviceInfo</string>
+    <string name="description_getappinfo">GetAppInfo</string>
     <string name="description_item_search">Search</string>
     <string name="installed_game">Installed</string>
     <string name="install_progress">Installing...</string>
