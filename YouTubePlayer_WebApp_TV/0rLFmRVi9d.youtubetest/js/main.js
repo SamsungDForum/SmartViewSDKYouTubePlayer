@@ -8,9 +8,7 @@ $(function(){
 	
 	var mClientId = null;
 	var fullscreen = false;
-//	hideDiv("connection");
-//	hideDiv("info");
-//	displayDiv("player");
+
 	
 	msf.local(function(err, service){
 		var reqAppControl = tizen.application.getCurrentApplication().getRequestedAppControl();
@@ -84,14 +82,13 @@ $(function(){
 			displayDiv("player");
 			
 						
-	    	var obj = JSON.parse(msg);
+			//var obj = JSON.parse(msg);
 	    	
-	        log("event play : obj "+obj);
  
-            title.innerHTML = "Title : "+ obj.videoName;
-            document.getElementById("thumnail").src = obj.videoThumnail;
+            title.innerHTML = "Title : "+ msg.videoName;
+            document.getElementById("thumnail").src = msg.videoThumnail;
             
-            readyPlayer(obj.videoId);
+            readyPlayer(msg.videoId);
             
             //document.getElementById("ytplayer").src = "http://www.youtube.com/embed/"+obj.videoId+"?autoplay=1&enablejsapi=1";     	        
             
@@ -199,16 +196,8 @@ $(function(){
 	}
 
 	
-//	jQuery(document).ready(function($) {
-	        
-//        $('#ytplayer').html('<iframe id="player_'+vidId+'" width="420" height="315" src="http://www.youtube.com/embed/' + vidId + '?enablejsapi=1&autoplay=1&autohide=1&showinfo=0" frameborder="0" allowfullscreen></iframe>');	
-//        
-//        player = new YT.Player('player_'+vidId, {
-//            events: {
-//                'onStateChange': onPlayerStateChange
-//            }
-//        });
-//	});
+
+
 	
 });
 
