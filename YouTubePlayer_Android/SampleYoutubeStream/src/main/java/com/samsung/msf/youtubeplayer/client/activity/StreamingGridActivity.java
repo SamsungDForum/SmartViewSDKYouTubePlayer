@@ -236,7 +236,7 @@ public class StreamingGridActivity extends Activity implements LoaderManager.Loa
 
                         Log.d(TAG, "application.publish: " + "messageData" + messageData.toString());
 //                        mApplication.publish(event, messageData.toString());
-                        publish(event, messageData);
+                        mApplication.publish(event, messageData);
 
                         Log.d(TAG, "application.publish: " + "VideoId" + streamingItemInfo.id);
 
