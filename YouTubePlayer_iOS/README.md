@@ -1,11 +1,17 @@
+# SmartViewSDK Youtube Sample App #
+
 ##Prerequisite
-###1. [SmartView SDK iOS framework](http://www.samsungdforum.com/AddLibrary/SmartViewDownload):  iOS Package(Mobile)
+
+
+
+###1. Library
+Download library manually [SmartView SDK iOS framework](http://developer.samsung.com/tv/develop/tools/extension-libraries/smart-view-sdk-download):  iOS Package(Mobile)
 	
 	add smartview.framework
 	
 ###2. Build Environment
 1. This code is developed using Objective-C language.
-2. Required Xcode version is 7.1	
+2. Required Xcode version is 8.3	
 	
 ###3. YouTube Data API  
 

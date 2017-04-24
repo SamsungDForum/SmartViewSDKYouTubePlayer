@@ -12,7 +12,7 @@ static NSString* youtubeAPI = @"https://www.googleapis.com/youtube/v3/search?";
 static NSString* FEED_WHAT = @"q=movie+trailers&part=snippet";
 static NSString* FEED_MAX = @"&maxResults=50";
 static NSString* FEED_ORDER = @"&order=relevance";
-static NSString* APIKey = @"&key=AIzaSyCgZOShkAiEK8D8V3rET-XQJiUTvakh980";
+static NSString* APIKey = @"&key=YOUR_API_KEY";
 
 NSString *const kListPrepared = @"ListPrepared";
 

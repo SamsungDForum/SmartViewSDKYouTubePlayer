@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9021F84B1EA8BC45000A2811 /* SmartView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9021F8491EA8BC33000A2811 /* SmartView.framework */; };
+		9021F84C1EA8BC45000A2811 /* SmartView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9021F8491EA8BC33000A2811 /* SmartView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		90CD1C731CD34300004F9DA8 /* VideoInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CD1C701CD34300004F9DA8 /* VideoInfo.m */; };
 		90CD1C741CD34300004F9DA8 /* YoutubeDataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CD1C721CD34300004F9DA8 /* YoutubeDataFetcher.m */; };
 		C91C2A291C89AF77003B3600 /* Requester.m in Sources */ = {isa = PBXBuildFile; fileRef = C91C2A281C89AF77003B3600 /* Requester.m */; };
@@ -15,8 +17,6 @@
 		C976D5341CA962740076AF4D /* DeviceListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C976D5311CA962740076AF4D /* DeviceListViewController.m */; };
 		C976D5351CA962740076AF4D /* PhotoShareController.m in Sources */ = {isa = PBXBuildFile; fileRef = C976D5331CA962740076AF4D /* PhotoShareController.m */; };
 		C976D5381CA964DB0076AF4D /* TerminateAppViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C976D5371CA964DB0076AF4D /* TerminateAppViewController.m */; };
-		C976D5471CA96F8C0076AF4D /* SmartView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C976D5451CA96F7E0076AF4D /* SmartView.framework */; };
-		C976D5481CA96F8C0076AF4D /* SmartView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C976D5451CA96F7E0076AF4D /* SmartView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C976D55B1CA97C3C0076AF4D /* cast_off.png in Resources */ = {isa = PBXBuildFile; fileRef = C976D5511CA97C3C0076AF4D /* cast_off.png */; };
 		C976D55C1CA97C3C0076AF4D /* cast_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C976D5521CA97C3C0076AF4D /* cast_off@2x.png */; };
 		C976D55D1CA97C3C0076AF4D /* cast_on.png in Resources */ = {isa = PBXBuildFile; fileRef = C976D5531CA97C3C0076AF4D /* cast_on.png */; };
@@ -42,7 +42,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				C976D5481CA96F8C0076AF4D /* SmartView.framework in Embed Frameworks */,
+				9021F84C1EA8BC45000A2811 /* SmartView.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -50,6 +50,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		9021F8491EA8BC33000A2811 /* SmartView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SmartView.framework; sourceTree = "<group>"; };
 		90CD1C6F1CD34300004F9DA8 /* VideoInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoInfo.h; sourceTree = "<group>"; };
 		90CD1C701CD34300004F9DA8 /* VideoInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoInfo.m; sourceTree = "<group>"; };
 		90CD1C711CD34300004F9DA8 /* YoutubeDataFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YoutubeDataFetcher.h; sourceTree = "<group>"; };
@@ -67,7 +68,6 @@
 		C976D5331CA962740076AF4D /* PhotoShareController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoShareController.m; sourceTree = "<group>"; };
 		C976D5361CA964DB0076AF4D /* TerminateAppViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TerminateAppViewController.h; sourceTree = "<group>"; };
 		C976D5371CA964DB0076AF4D /* TerminateAppViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TerminateAppViewController.m; sourceTree = "<group>"; };
-		C976D5451CA96F7E0076AF4D /* SmartView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SmartView.framework; sourceTree = "<group>"; };
 		C976D5511CA97C3C0076AF4D /* cast_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cast_off.png; sourceTree = "<group>"; };
 		C976D5521CA97C3C0076AF4D /* cast_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cast_off@2x.png"; sourceTree = "<group>"; };
 		C976D5531CA97C3C0076AF4D /* cast_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cast_on.png; sourceTree = "<group>"; };
@@ -95,7 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C976D5471CA96F8C0076AF4D /* SmartView.framework in Frameworks */,
+				9021F84B1EA8BC45000A2811 /* SmartView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,7 +122,7 @@
 		C9D0FC961C89602900E8EDEC = {
 			isa = PBXGroup;
 			children = (
-				C976D5451CA96F7E0076AF4D /* SmartView.framework */,
+				9021F8491EA8BC33000A2811 /* SmartView.framework */,
 				C9D0FCA11C89602900E8EDEC /* SampleYouTubePlayer */,
 				C9D0FCA01C89602900E8EDEC /* Products */,
 			);
@@ -205,11 +205,13 @@
 		C9D0FC971C89602900E8EDEC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = samsung;
 				TargetAttributes = {
 					C9D0FC9E1C89602900E8EDEC = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = 9BA8G3LBM6;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -308,8 +310,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: HYOJAE LEE (L6J4NPG367)";
@@ -354,8 +358,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: HYOJAE LEE (L6J4NPG367)";
@@ -384,9 +390,11 @@
 		C9D0FCB71C89602900E8EDEC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: HYOJAE LEE (L6J4NPG367)";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 9BA8G3LBM6;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -399,16 +407,19 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.samsung.smartview.ytp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "27ff4e81-57bd-45bd-b723-325bfa1bcbda";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
 		C9D0FCB81C89602900E8EDEC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: HYOJAE LEE (L6J4NPG367)";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 9BA8G3LBM6;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -421,7 +432,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.samsung.smartview.ytp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "27ff4e81-57bd-45bd-b723-325bfa1bcbda";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};
